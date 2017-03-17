@@ -9,6 +9,7 @@ import Jokes from './components/Jokes'
 import Login from './components/Login'
 import WhoAmI from './components/WhoAmI'
 import LiveApp from './components/LiveApp'
+import MainScreen from './components/MainScreen'
 
 const socket = io(window.location.origin)
 
@@ -23,7 +24,7 @@ const ExampleApp = connect(
     <div>
       <nav>
         {user ? <WhoAmI/> : <Login/>}
-      </nav> 
+      </nav>
       {children}
     </div>
 )
@@ -36,6 +37,7 @@ render (
         <Route path="/jokes" component={Jokes} />
       </Route>
       <Route path="/live" component={LiveApp} />
+      <Route path="/mainscreen" component={MainScreen}/>
     </Router>
   </Provider>,
   document.getElementById('main')

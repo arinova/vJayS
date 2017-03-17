@@ -82,8 +82,13 @@ if (module === require.main) {
 
   var io = socketio(server)
 
-  io.on('connection', () => {
+  io.on('connection', (clientSocket) => {
+
     console.log("A client has connected!")
+    clientSocket.on('mouse_position', (data)=>{
+      clientSocket.broadcast.emit('sendMousePostoMain', data)
+    })
+
   })
 }
 
