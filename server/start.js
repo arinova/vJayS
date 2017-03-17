@@ -89,6 +89,8 @@ if (module === require.main) {
       clientSocket.broadcast.emit('sendMousePostoMain', data)
     })
 
+    
+
   })
 }
 

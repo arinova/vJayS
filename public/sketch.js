@@ -11,13 +11,7 @@ function setup() {
     console.log("~~sketch~MainScreen Socket~~~~~")
     socket.on('sendMousePostoMain', (data)=>{
       console.log("main",data);
-
       ellipse(data.x, data.y, 80, 80);
     })
   })
-
-
-}
-
-function draw() {
 }

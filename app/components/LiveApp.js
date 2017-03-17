@@ -11,7 +11,7 @@ export default class LiveApp extends Component {
 			console.log("~~~Getting the socket to work in this component!~~~~~")
 
 			let x, y
-			$(document).on('mousemove', function(e){
+			$(document).on('touchmove', function(e){
 				x=e.pageX
 				y=e.pageY
 				socket.emit('mouse_position', {x, y})
