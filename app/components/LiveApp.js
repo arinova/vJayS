@@ -5,7 +5,7 @@ import {connect} from 'react-redux'
 
 var socket = io(window.location.origin)
 
-export default class LiveApp extends Component {
+class LiveApp extends Component {
 	componentDidMount() {
 		socket.on('connect', () => {
 			console.log("~~~Getting the socket to work in this component!~~~~~")
@@ -34,14 +34,17 @@ export default class LiveApp extends Component {
 		return (
 			<div>
 				<h4>Getting to the live app!!</h4>
+				<h3>Command: {this.props.command}</h3>
 					<div id="p5parent"></div>
 			</div>
 		)
 	}
 }
 
-// const mapStateToProps = state => ({
-// 	liveEffect = state.liveEffect
-// })
+const mapStateToProps=state => {
+	return {
+		command: state.command
+	}
+}
 
-// export default connect(mapStateToProps)(LiveApp)
+export default connect(mapStateToProps)(LiveApp);

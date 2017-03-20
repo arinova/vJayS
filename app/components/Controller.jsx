@@ -1,12 +1,19 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
+import {setCommand} from '../reducers/command'
+import {Link} from 'react-router'
 
 // from state: liveEffect
 
 var socket = io(window.location.origin)
 
-export default class Controller extends Component {
+class Controller extends Component {
 
+	constructor(){
+		super()
+		this.handleEllipseButton = this.handleEllipseButton.bind(this)
+		this.handleSnakeButton = this.handleSnakeButton.bind(this)
+	}
 
 	componentDidMount() {
 
@@ -17,21 +24,41 @@ export default class Controller extends Component {
   }
 
 	handleEllipseButton(){
-		socket.emit("ellipseButtonClicked")
+		console.log("controller click ellipse")
+		this.props.handleSetCommand("ellipse")
 	}
 
 	handleSnakeButton(){
-		socket.emit("snakeButtonClicked")
+		console.log("controller click snake")
+		this.props.handleSetCommand("snake")
 	}
 
 	render() {
+		console.log("command current", this.props.command);
 		return (
 			<div>
 				<h4>Controllerrrr</h4>
-				<button onClick={this.handleEllipseButton}>Clear</button>
-				<button onClick={this.handleSnakeButton}>Clear</button>
+				<button onClick={this.handleEllipseButton}>Ellipse</button>
+				<button onClick={this.handleSnakeButton}>Snake</button>
         <button onClick={this.handleClearButton}>Clear</button>
-			</div>
+				<Link to="/mainscreen">to MainScreen</Link>
+		</div>
 		)
 	}
 }
+
+const mapStateToProps=state => {
+	return {
+		command: state.command
+	}
+}
+
+const mapDispatchToProps=dispatch => {
+	return {
+		handleSetCommand (command) {
+			return dispatch(setCommand(command))
+		}
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Controller);
