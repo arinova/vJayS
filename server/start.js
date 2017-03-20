@@ -97,8 +97,12 @@ if (module === require.main) {
       clientSocket.broadcast.emit('drawEllipse')
     })
 
-    clientSocket.on('snakeButtonClicked', ()=>{
-      clientSocket.broadcast.emit('drawSnake')
+    clientSocket.on('clickedColorEllipse', ()=>{
+      clientSocket.broadcast.emit('drawColorEllipse')
+    })
+
+    clientSocket.on('clickedWhiteEllipse', ()=> {
+      clientSocket.broadcast.emit('drawWhiteEllipse')
     })
 
 

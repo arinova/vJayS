@@ -30,7 +30,7 @@ function sketch2(p) {
   function setup() {
     var parent=document.getElementById("p5parent");
     var p5Canvas=p.createCanvas(600, 600, true);
-    p5Canvas.parent("p5parent");
+    p5Canvas.parent("p6parent");
 
     socket = io(window.location.origin)
     socket.on('connect', () => {

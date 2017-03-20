@@ -26,11 +26,13 @@ class Controller extends Component {
 	handleWhiteButton(){
 		console.log("controller click white")
 		this.props.handleSetCommand("white")
+		socket.emit('clickedWhiteEllipse')
 	}
 
 	handleColorButton(){
 		console.log("controller click color")
 		this.props.handleSetCommand("color")
+		socket.emit('clickedColorEllipse')
 	}
 
 	render() {

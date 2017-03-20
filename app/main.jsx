@@ -38,7 +38,8 @@ render (
         <Route path="/jokes" component={Jokes} />
       </Route>
       <Route path="/live" component={LiveApp} />
-      <Route path="/mainscreen" component={MainScreen}/>
+      <Route path="/mainscreen" component={MainScreen}>
+      </Route>
       <Route path="/controller" component={Controller}/>
     </Router>
   </Provider>,
