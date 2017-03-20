@@ -25,12 +25,12 @@ class Controller extends Component {
 
 	handleEllipseButton(){
 		console.log("controller click ellipse")
-		this.props.handleSetCommand("ellipse")
+		socket.emit('ellipseButtonClicked')
 	}
 
 	handleSnakeButton(){
 		console.log("controller click snake")
-		this.props.handleSetCommand("snake")
+		socket.emit('snakeButtonClicked')
 	}
 
 	render() {

@@ -93,11 +93,11 @@ if (module === require.main) {
       clientSocket.broadcast.emit('clearCanvas')
     })
 
-    clientSocket.on('ellipseButtonClicked', (data)=>{
+    clientSocket.on('ellipseButtonClicked', ()=>{
       clientSocket.broadcast.emit('drawEllipse')
     })
 
-    clientSocket.on('snakeButtonClicked', (data)=>{
+    clientSocket.on('snakeButtonClicked', ()=>{
       clientSocket.broadcast.emit('drawSnake')
     })
 

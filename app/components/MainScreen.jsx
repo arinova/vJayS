@@ -12,11 +12,29 @@ class MainScreen extends Component {
 		super()
 		this.state={
 			scriptError: false,
-			scriptLoaded: false
+			scriptLoaded: false,
+			url: ""
 		}
 	}
 
+	componentWillMount(){
+		const script = document.createElement("script");
+
+		        script.src = "/sketch.js";
+		        script.async = true;
+
+		        document.body.appendChild(script);
+
+	}
+
 	componentDidMount() {
+		socket.on('drawEllipse', ()=>{
+			this.setState({url: "/sketch.js", scriptLoaded: false})
+		})
+
+		socket.on('drawSnake', ()=>{
+			this.setState({url: "/snakeSketch.js",scriptLoaded: false})
+		})
 	}
 
 	handleScriptLoad(){
@@ -30,28 +48,13 @@ class MainScreen extends Component {
 	}
 
 	render() {
-		let url;
-		console.log("command first:", this.props.command)
-		switch(this.props.command){
-			case "ellipse":
-				url="/sketch.js"; break;
-			case "snake":
-				url="/snakeSketch.js"; break;
-			default: url=null;
-		}
-
-		console.log("url", url);
+		console.log("url", this.state.url);
 		return (
 			<div>
 				<h4>We're at the main screen!!</h4>
         <div className="mainScreen">
           <iframe width="560" height="315" src="https://www.youtube.com/embed/FdUj7KCO_G0" frameborder="0" allowfullscreen></iframe>
           <div id="p5parent"></div>
-					<Script
-						url={url}
-						onError={this.handleScriptError.bind(this)}
-						onLoad={this.handleScriptLoad.bind(this)}
-						/>
         </div>
 			</div>
 		)
