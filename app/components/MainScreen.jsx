@@ -1,60 +1,35 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import Script from 'react-load-script'
+import P5Wrapper from 'react-p5-wrapper'
+import {sketch, sketch2} from '../sketches/sketch'
 
 // from state: liveEffect
 
-var socket = io(window.location.origin)
 
 class MainScreen extends Component {
-
-	constructor(){
-		super()
-		this.state={
-			scriptError: false,
-			scriptLoaded: false,
-			url: ""
-		}
-	}
-
-	componentWillMount(){
-		const script = document.createElement("script");
-
-		        script.src = "/sketch.js";
-		        script.async = true;
-
-		        document.body.appendChild(script);
-
-	}
-
-	componentDidMount() {
-		socket.on('drawEllipse', ()=>{
-			this.setState({url: "/sketch.js", scriptLoaded: false})
-		})
-
-		socket.on('drawSnake', ()=>{
-			this.setState({url: "/snakeSketch.js",scriptLoaded: false})
-		})
-	}
-
-	handleScriptLoad(){
-		console.log("script loaded");
-		this.setState({scriptLoaded: true})
-	}
-
-	handleScriptError(){
-		console.log("script failed to load");
-		this.setState({scriptError: true})
-	}
-
 	render() {
-		console.log("url", this.state.url);
+		
+		let sketchFunction
+
+		switch(this.props.command) {
+			case "white": 
+				sketchFunction = sketch; break;
+
+			case "color":
+				sketchFunction = sketch2; break;
+
+			default: sketchFunction = sketch;
+		}
+
 		return (
 			<div>
 				<h4>We're at the main screen!!</h4>
         <div className="mainScreen">
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/FdUj7KCO_G0" frameborder="0" allowfullscreen></iframe>
-          <div id="p5parent"></div>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/FdUj7KCO_G0" frameBorder="0" allowFullScreen></iframe>
+					<div id="p5parent">
+						<P5Wrapper sketch={sketchFunction}/>
+					</div>
         </div>
 			</div>
 		)

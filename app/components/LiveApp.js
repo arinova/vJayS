@@ -9,22 +9,6 @@ class LiveApp extends Component {
 	componentDidMount() {
 		socket.on('connect', () => {
 			console.log("~~~Getting the socket to work in this component!~~~~~")
-
-			// let x, y
-			// $(document).on('touchmove', function(e){
-			// 	e.preventDefault()
-			// 	x=e.pageX
-			// 	y=e.pageY
-			// 	socket.emit('mouse_position', {x, y})
-			// })
-			// socket.on('mouse',
-			// 	function(data) {
-			// 		// Data comes in as whatever was sent, including objects
-			// 		console.log("Received: 'mouse' " + data.x + " " + data.y);
-			// 		// Send it to all other clients
-			// 		socket.broadcast.emit('mouse', data);
-			// 	}
-			// );
 		})
 		this.handleTouchMove=this.handleTouchMove.bind(this)
 	}

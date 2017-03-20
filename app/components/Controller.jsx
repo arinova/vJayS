@@ -11,8 +11,8 @@ class Controller extends Component {
 
 	constructor(){
 		super()
-		this.handleEllipseButton = this.handleEllipseButton.bind(this)
-		this.handleSnakeButton = this.handleSnakeButton.bind(this)
+		this.handleWhiteButton = this.handleWhiteButton.bind(this)
+		this.handleColorButton = this.handleColorButton.bind(this)
 	}
 
 	componentDidMount() {
@@ -23,14 +23,14 @@ class Controller extends Component {
     socket.emit("clearButtonClicked")
   }
 
-	handleEllipseButton(){
-		console.log("controller click ellipse")
-		socket.emit('ellipseButtonClicked')
+	handleWhiteButton(){
+		console.log("controller click white")
+		this.props.handleSetCommand("white")
 	}
 
-	handleSnakeButton(){
-		console.log("controller click snake")
-		socket.emit('snakeButtonClicked')
+	handleColorButton(){
+		console.log("controller click color")
+		this.props.handleSetCommand("color")
 	}
 
 	render() {
@@ -38,8 +38,8 @@ class Controller extends Component {
 		return (
 			<div>
 				<h4>Controllerrrr</h4>
-				<button onClick={this.handleEllipseButton}>Ellipse</button>
-				<button onClick={this.handleSnakeButton}>Snake</button>
+				<button onClick={this.handleWhiteButton}>White Ellipse</button>
+				<button onClick={this.handleColorButton}>Color Ellipse</button>
         <button onClick={this.handleClearButton}>Clear</button>
 				<Link to="/mainscreen">to MainScreen</Link>
 		</div>
