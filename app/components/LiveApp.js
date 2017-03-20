@@ -12,6 +12,7 @@ export default class LiveApp extends Component {
 
 			let x, y
 			$(document).on('touchmove', function(e){
+				e.preventDefault()
 				x=e.pageX
 				y=e.pageY
 				socket.emit('mouse_position', {x, y})

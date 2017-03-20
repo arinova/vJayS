@@ -89,7 +89,19 @@ if (module === require.main) {
       clientSocket.broadcast.emit('sendMousePostoMain', data)
     })
 
-    
+    clientSocket.on('clearButtonClicked', (data)=>{
+      clientSocket.broadcast.emit('clearCanvas')
+    })
+
+    clientSocket.on('ellipseButtonClicked', (data)=>{
+      clientSocket.broadcast.emit('drawEllipse')
+    })
+
+    clientSocket.on('snakeButtonClicked', (data)=>{
+      clientSocket.broadcast.emit('drawSnake')
+    })
+
+
 
   })
 }

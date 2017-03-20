@@ -10,6 +10,7 @@ import Login from './components/Login'
 import WhoAmI from './components/WhoAmI'
 import LiveApp from './components/LiveApp'
 import MainScreen from './components/MainScreen'
+import Controller from './components/Controller'
 
 const socket = io(window.location.origin)
 
@@ -38,6 +39,7 @@ render (
       </Route>
       <Route path="/live" component={LiveApp} />
       <Route path="/mainscreen" component={MainScreen}/>
+      <Route path="/controller" component={Controller}/>
     </Router>
   </Provider>,
   document.getElementById('main')
