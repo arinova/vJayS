@@ -7,6 +7,15 @@
   left:0;
 }
 
+#p6parent{
+  width:800px;
+  height: 800px;
+  opacity:.5;
+  position: absolute;
+  top:0;
+  left:0;
+}
+
 .mainScreen{
   position: absolute;
   padding-right: 0;

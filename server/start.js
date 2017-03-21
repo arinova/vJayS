@@ -81,33 +81,8 @@ if (module === require.main) {
   )
 
   var io = socketio(server)
-
-  io.on('connection', (clientSocket) => {
-
-    console.log("A client has connected!")
-    clientSocket.on('mouse_position', (data)=>{
-      clientSocket.broadcast.emit('sendMousePostoMain', data)
-    })
-
-    clientSocket.on('clearButtonClicked', (data)=>{
-      clientSocket.broadcast.emit('clearCanvas')
-    })
-
-    clientSocket.on('ellipseButtonClicked', ()=>{
-      clientSocket.broadcast.emit('drawEllipse')
-    })
-
-    clientSocket.on('clickedColorEllipse', ()=>{
-      clientSocket.broadcast.emit('drawColorEllipse')
-    })
-
-    clientSocket.on('clickedWhiteEllipse', ()=> {
-      clientSocket.broadcast.emit('drawWhiteEllipse')
-    })
-
-
-
-  })
+  require('./sockets/controller')(io);
+  require('./sockets/mobile')(io);
 }
 
 

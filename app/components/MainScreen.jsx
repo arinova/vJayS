@@ -27,11 +27,11 @@ class MainScreen extends Component {
 	}
 
 	render() {
-		
+
 		// let sketchFunction
 
 		// switch(this.props.command) {
-		// 	case "white": 
+		// 	case "white":
 		// 		sketchFunction = sketch; break;
 
 		// 	case "color":
@@ -46,14 +46,14 @@ class MainScreen extends Component {
         <div className="mainScreen">
           <iframe width="560" height="315" src="https://www.youtube.com/embed/FdUj7KCO_G0" frameBorder="0" allowFullScreen></iframe>
           {
-          	this.state.sketchFunction === sketch ? 
-						<div id="p5parent">
+          	this.state.sketchFunction === sketch ?
+						<div id="p5parent" class="p5parents">
 							<P5Wrapper sketch={sketch}/>
 						</div> : null
           }
           {
-          	this.state.sketchFunction === sketch2 ? 
-						<div id="p6parent">
+          	this.state.sketchFunction === sketch2 ?
+						<div id="p6parent" class="p5parents">
 							<P5Wrapper sketch={sketch2}/>
 						</div> : null
           }
