@@ -17,6 +17,10 @@ module.exports = function(io) {
         controllerSocket.broadcast.emit('drawWhiteEllipse')
       })
 
+      controllerSocket.on('clickedSnake', ()=> {
+        controllerSocket.broadcast.emit('drawSnake')
+      })
+
 
 
     });

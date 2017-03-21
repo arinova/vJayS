@@ -16,6 +16,15 @@
   left:0;
 }
 
+#p7parent{
+  width:800px;
+  height: 800px;
+  opacity:.9;
+  position: absolute;
+  top:0;
+  left:0;
+}
+
 .mainScreen{
   position: absolute;
   padding-right: 0;
