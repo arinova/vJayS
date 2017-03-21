@@ -12,7 +12,8 @@ class MainScreen extends Component {
 		super(props)
 
 		this.state = {
-			sketchFunction: sketch
+			sketchFunction: sketch,
+			message: ""
 		}
 	}
 
@@ -29,6 +30,15 @@ class MainScreen extends Component {
 		socket.on('drawSnake', () => {
 			this.setState({sketchFunction: snakeSketch})
 		})
+
+		socket.on('getMessages', (message) => {
+			this.setState({sketchFunction: null})
+		})
+
+		socket.on('addMessage', (message) => {
+			console.log("controle mssg", message)
+			this.setState({message:message})
+		})
 	}
 
 	render() {
@@ -38,7 +48,13 @@ class MainScreen extends Component {
 				<h4>We're at the main screen!!</h4>
         <div className="mainScreen">
           <iframe width="560" height="315" src="https://www.youtube.com/embed/FdUj7KCO_G0" frameBorder="0" allowFullScreen></iframe>
-          {
+						{
+	          	this.state.sketchFunction === null ?
+							<div className="messagesView">
+								<h1>this.state.message}</h1>
+							</div> : null
+	          }
+					{
           	this.state.sketchFunction === sketch ?
 						<div id="p5parent" className="p5parents">
 							<P5Wrapper sketch={sketch}/>

@@ -14,6 +14,7 @@ class Controller extends Component {
 		this.handleWhiteButton = this.handleWhiteButton.bind(this)
 		this.handleColorButton = this.handleColorButton.bind(this)
 		this.handleSnakeButton = this.handleSnakeButton.bind(this)
+		this.handleGetMessagesButton= this.handleGetMessagesButton.bind(this)
 	}
 
 	componentDidMount() {
@@ -42,6 +43,12 @@ class Controller extends Component {
 		socket.emit('clickedSnake')
 	}
 
+	handleGetMessagesButton(){
+		console.log("controller click get messages")
+		this.props.handleSetCommand("messages")
+		socket.emit('clickedGetMessages')
+	}
+
 	render() {
 		console.log("command current", this.props.command);
 		return (
@@ -51,6 +58,7 @@ class Controller extends Component {
 				<button onClick={this.handleColorButton}>Color Ellipse</button>
 					<button onClick={this.handleSnakeButton}>Snake</button>
         <button onClick={this.handleClearButton}>Clear</button>
+				  <button onClick={this.handleGetMessagesButton}>Get Messages</button>
 				<Link to="/mainscreen">to MainScreen</Link>
 		</div>
 		)

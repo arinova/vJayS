@@ -1,3 +1,13 @@
+.messagesView{
+  width:100%;
+  opacity:.9;
+  position: absolute;
+  top:0;
+  left:0;
+  color: white;
+  background-color: steelblue;
+}
+
 #p5parent{
   width:800px;
   height: 800px;

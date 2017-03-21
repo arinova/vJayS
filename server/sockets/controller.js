@@ -21,6 +21,13 @@ module.exports = function(io) {
         controllerSocket.broadcast.emit('drawSnake')
       })
 
+      controllerSocket.on('clickedGetMessages', ()=> {
+        controllerSocket.broadcast.emit('getMessages')
+      })
+
+      controllerSocket.on('sendMessage', (message)=> {
+        controllerSocket.broadcast.emit('addMessage', message)
+      })
 
 
     });

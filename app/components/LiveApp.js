@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
+import TextForm from './TextForm'
 
 // from state: liveEffect
 
@@ -19,6 +20,11 @@ class LiveApp extends Component {
 		let x, y
 		x=e.touches[0].clientX
 		y=e.touches[0].clientY
+		socket.emit('mouse_position', {x, y})
+	}
+
+	handleSubmit(e){
+		e.preventDefault()
 		socket.emit('mouse_position', {x, y})
 	}
 

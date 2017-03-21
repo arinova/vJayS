@@ -9,6 +9,7 @@ import Jokes from './components/Jokes'
 import Login from './components/Login'
 import WhoAmI from './components/WhoAmI'
 import LiveApp from './components/LiveApp'
+import LiveText from './components/LiveText'
 import MainScreen from './components/MainScreen'
 import Controller from './components/Controller'
 
@@ -38,6 +39,7 @@ render (
         <Route path="/jokes" component={Jokes} />
       </Route>
       <Route path="/live" component={LiveApp} />
+      <Route path="/livetext" component={LiveText} />
       <Route path="/mainscreen" component={MainScreen}>
       </Route>
       <Route path="/controller" component={Controller}/>
